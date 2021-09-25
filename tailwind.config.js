@@ -2,7 +2,7 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-     screens: {
+    screens: {
       sm: "440px",
       // => @media (min-width: 640px) { ... }
 
@@ -17,6 +17,9 @@ module.exports = {
 
       "2xl": "1680px",
       // => @media (min-width: 1536px) { ... }
+    },
+    fontFamily: {
+      sans:['"Stick No Bills"','sans-serifs'],
     },
     extend: {},
   },
