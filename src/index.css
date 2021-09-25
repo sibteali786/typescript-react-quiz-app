@@ -3,10 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply m-0 p-0 w-full bg-primary;
+}
+
 .btn {
-  @apply transition duration-500 ease-in-out;
+  @apply transition duration-200 ease-in-out border-2 border-accent_1;
 }
 
 .btn:hover {
-  @apply transform scale-110 bg-green-100 text-secondary border-2 border-accent_1;
+  @apply transform bg-green-100 text-secondary;
 }
