@@ -8,19 +8,19 @@ function App() {
   const startQuiz = async () => {};
   const nextQuestion = async () => {};
   return (
-    <div className="container bg-green-100 mx-auto p-4">
+    <div className=" bg-primary mx-auto p-4 h-screen">
       <div className="text-center">
-        <h1 className=" text-6xl text-green-600">Quiz</h1>
+        <h1 className=" text-6xl text-accent_2">Quiz</h1>
         <button
-          className="start text-green-900 text-lg px-4 py-1 border-2 border-green-700 rounded-lg hover:bg-green-200 "
+          className="start text-accent_2 text-lg px-4 py-1 rounded-lg btn bg-accent_1 "
           onClick={startQuiz}
         >
           Begin Quiz
         </button>
-        <p className="text-4xl text-indigo-500">Score : </p>
-        <p className=" text-6xl text-indigo-700">Loading :</p>
+        <p className="text-4xl text-accent_2">Score : </p>
+        <p className=" text-6xl text-accent_2">Loading :</p>
         <button
-          className="next text-green-900 text-lg px-3 py-1/2 border-2 border-green-700 rounded-md hover:bg-green-200"
+          className="next text-accent_2 text-lg px-3 py-1/2 bg-accent_1 rounded-md btn"
           onClick={nextQuestion}
         >
           Next

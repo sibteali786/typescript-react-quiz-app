@@ -19,9 +19,16 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     fontFamily: {
-      sans:['"Stick No Bills"','sans-serifs'],
+      sans: ['"Stick No Bills"', "sans-serifs"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#222831",
+        secondary: "#393E46",
+        accent_1: "#00ADB5",
+        accent_2: "#EEEEEE",
+      },
+    },
   },
   variants: {
     extend: {},
