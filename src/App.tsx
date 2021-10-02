@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import QuestionCards from "./components/QuestionCards";
+import { fetchQuizQuestions } from "./API";
+// Types
+import { Difficulty, QuestionState } from "./API";
+
+// Total questions
+const TOTAL_QUESTIONS = 10;
+
+type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
 
 function App() {
-  const startTrivia = async () => {};
+  const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState<QuestionState[]>([]);
+  const [number, setNumber] = useState(0); // the current question Number user is on
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(true);
+
+  const startTrivia = async () => {
+    setLoading(true);
+    setGameOver(false);
+    const newQuestions = await fetchQuizQuestions(
+      TOTAL_QUESTIONS,
+      Difficulty.EASY
+    );
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
+  };
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
-  const startQuiz = async () => {};
   const nextQuestion = async () => {};
   return (
     <div className=" mx-auto p-4 h-screen flex flex-col justify-center items-center">
@@ -13,7 +44,7 @@ function App() {
         <h1 className=" text-6xl text-accent_2 mt-2">Quiz</h1>
         <button
           className="start text-accent_2 text-lg px-4 py-1 rounded-lg btn bg-accent_1 my-8"
-          onClick={startQuiz}
+          onClick={startTrivia}
         >
           Begin Quiz
         </button>
@@ -26,7 +57,14 @@ function App() {
           Next
         </button>
       </div>
-      {/* <QuestionCards /> */}
+      {/* <QuestionCards
+        questionNr={number + 1}
+        totalQuestions={TOTAL_QUESTIONS}
+        question={questions[number].question}
+        answers={questions[number].answer}
+        userAnswer={userAnswers ? userAnswers[number] : undefined}
+        callback={checkAnswer}
+      /> */}
     </div>
   );
 }
