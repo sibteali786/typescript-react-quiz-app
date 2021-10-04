@@ -8,7 +8,7 @@ import { Difficulty, QuestionState } from "./API";
 // Total questions
 const TOTAL_QUESTIONS = 10;
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -36,8 +36,33 @@ function App() {
     setNumber(0);
     setLoading(false);
   };
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
-  const nextQuestion = async () => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      // user answer
+      const answer = e.currentTarget.value;
+      // check answer against correct answer
+      const correct = questions[number].correct_answer === answer;
+      // add score if answer is correct
+      if (correct) setScore((prev) => prev + 1);
+      // save answer in the array for user answers
+      const answerObject = {
+        question: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
+  const nextQuestion = async () => {
+    // move to next question if not last question
+    const nextQuestion = number + 1;
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
+  };
   return (
     <div className=" mx-auto p-4 h-screen flex flex-col justify-center items-center">
       <div className="text-center ">
@@ -51,7 +76,7 @@ function App() {
           </button>
         ) : null}
         {!gameOver ? (
-          <p className="text-4xl text-accent_2 my-4">Score : </p>
+          <p className="text-4xl text-accent_2 my-4">Score : {score} </p>
         ) : null}
 
         {loading && <p className=" text-6xl text-accent_2 my-8">Loading :</p>}
@@ -67,12 +92,17 @@ function App() {
           callback={checkAnswer}
         />
       )}
-      <button
-        className="next text-accent_2 text-lg my-2 px-3 mx-2 py-1/2 bg-accent_1 rounded-md btn"
-        onClick={nextQuestion}
-      >
-        Next
-      </button>
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS - 1 ? (
+        <button
+          className="next text-accent_2 text-lg my-2 px-3 mx-2 py-1/2 bg-accent_1 rounded-md btn"
+          onClick={nextQuestion}
+        >
+          Next
+        </button>
+      ) : null}
     </div>
   );
 }

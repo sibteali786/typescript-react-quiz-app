@@ -1,10 +1,10 @@
 import React from "react";
-
+import { AnswerObject } from "../App";
 type Props = {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  userAnswer: AnswerObject | undefined;
   questionNr: number;
   totalQuestions: number;
 };
@@ -28,7 +28,10 @@ const QuestionCards: React.FC<Props> = ({
       <div className="flex flex-col justify-center items-center">
         {answers.map((answer) => (
           <button
-            disabled={userAnswer}
+            key={answer}
+            disabled={userAnswer ? true : false}
+            
+            value={answer}
             onClick={callback}
             className="px-3 py-1 m-2 text-white bg-gray-600 rounded-lg hover:bg-gray-700"
           >
