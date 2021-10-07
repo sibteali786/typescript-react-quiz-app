@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/typescript-react-quiz-app/static/css/main.950ba48a.chunk.css",
+    "main.js": "/typescript-react-quiz-app/static/js/main.862326b7.chunk.js",
+    "main.js.map": "/typescript-react-quiz-app/static/js/main.862326b7.chunk.js.map",
+    "runtime-main.js": "/typescript-react-quiz-app/static/js/runtime-main.c2f62463.js",
+    "runtime-main.js.map": "/typescript-react-quiz-app/static/js/runtime-main.c2f62463.js.map",
+    "static/js/2.473f7b4e.chunk.js": "/typescript-react-quiz-app/static/js/2.473f7b4e.chunk.js",
+    "static/js/2.473f7b4e.chunk.js.map": "/typescript-react-quiz-app/static/js/2.473f7b4e.chunk.js.map",
+    "index.html": "/typescript-react-quiz-app/index.html",
+    "static/css/main.950ba48a.chunk.css.map": "/typescript-react-quiz-app/static/css/main.950ba48a.chunk.css.map",
+    "static/js/2.473f7b4e.chunk.js.LICENSE.txt": "/typescript-react-quiz-app/static/js/2.473f7b4e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c2f62463.js",
+    "static/js/2.473f7b4e.chunk.js",
+    "static/css/main.950ba48a.chunk.css",
+    "static/js/main.862326b7.chunk.js"
+  ]
+}
